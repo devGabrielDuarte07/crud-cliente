@@ -4,12 +4,14 @@ import java.util.Scanner;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        menuPrincipal();
 
+
+        String[][] matrizClientes = new String[0][8];
+        menuPrincipal(matrizClientes);
 
     }
 
-    public static void menuPrincipal(){
+    public static void menuPrincipal(String[][] matrizClientes){
         System.out.println("1 - Gerenciar clientes");
         System.out.println("2 - Gerenciar contatos");
         System.out.println("3 - Relatórios");
@@ -22,7 +24,8 @@ public class Main {
 
             switch (opcMenu) {
                 case 1:
-                    Clientes.menuCliente();
+                    matrizClientes = Clientes.carregarClientesCSV();
+                    Clientes.menuCliente(matrizClientes);
                     break;
                 case 2:
                     Contatos.menuContato();
@@ -35,7 +38,7 @@ public class Main {
                     return;
                 default:
                     System.out.println("Opção válida, tente novamente ");
-                    menuPrincipal();
+                    menuPrincipal(matrizClientes);
             }
         } while (opcMenu != 0);
     }
