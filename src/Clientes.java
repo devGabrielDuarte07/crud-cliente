@@ -85,7 +85,26 @@ public class Clientes {
         Scanner input = new Scanner(System.in);
         System.out.println("Digite o código do cliente que deseja excluir: ");
         int codigo = input.nextInt();
+        String codigoStr = String.valueOf(codigo);
+        boolean encotrado = false;
 
+        for (int i = 0; i < matrizClientes.length; i++) {
+
+            if(matrizClientes[i][0] != null && matrizClientes[i][0].equals(codigoStr)){
+                int colunaStatus = matrizClientes[i].length - 1;
+                matrizClientes[i][colunaStatus] = "Inativo";
+
+                encotrado = true;
+                System.out.println("Cliente invativado com sucesso");
+                break;
+            }
+
+
+        }
+
+        if (!encotrado){
+            System.out.println("Cliente com código " + codigo + " não encontrado");
+        }
 
         return matrizClientes;
     }
