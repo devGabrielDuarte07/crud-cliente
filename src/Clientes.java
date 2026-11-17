@@ -60,17 +60,20 @@ public class Clientes {
     private static void listarClientesAtivos(String[][] matrizClientes) {
 
 
-        System.out.println("CODIGO | NOME | CPF/CNPJ | NASCIMENTO | SEXO | CIDADE | ESTADO | STATUS");
+        String[] cabecalho = {
+                "CODIGO", "NOME", "CPF/CNPJ", "NASCIMENTO",
+                "SEXO", "CIDADE", "ESTADO", "STATUS"
+        };
+
+        int[] tamanhos = {8, 30, 15, 15, 10, 20, 10, 10};
+
+        Utils.imprimirLinhas(cabecalho, tamanhos);
 
         for (int i = 0; i < matrizClientes.length; i++) {
 
             if(matrizClientes[i][7].equalsIgnoreCase("ativo")) {
 
-                for (int j = 0; j < 8; j++) {
-                    System.out.print(matrizClientes[i][j] + " | ");
-                }
-
-                System.out.println();
+                Utils.imprimirLinhas(matrizClientes[i], tamanhos);
             }
         }
     }
